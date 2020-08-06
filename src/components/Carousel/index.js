@@ -2,8 +2,8 @@ import React from 'react';
 import { VideoCardGroupContainer, VideoCardList, Title, ExtraLink } from './styles';
 import VideoCard from './components/VideoCard';
 
-function VideoCardGroup({
-  ignoreFirstVideo,
+function Carousel({
+  ignoreFirstVideo = null,
   category,
 }) {
   const categoryTitle = category.titulo;
@@ -17,16 +17,16 @@ function VideoCardGroup({
           <Title style={{ backgroundColor: categoryColor || 'red' }}>
             {categoryTitle}
           </Title>
-          {categoryExtraLink && 
+          {categoryExtraLink &&
             <ExtraLink href={categoryExtraLink.url} target="_blank">
-              {categoryExtraLink.text}  
+              {categoryExtraLink.text}
             </ExtraLink>
           }
         </>
       )}
       <VideoCardList>
         {videos.map((video, index) => {
-          if (ignoreFirstVideo && index === 0) {
+          if (ignoreFirstVideo !== null && index === 0) {
             return null;
           }
 
@@ -45,4 +45,4 @@ function VideoCardGroup({
   );
 }
 
-export default VideoCardGroup;
+export default Carousel;

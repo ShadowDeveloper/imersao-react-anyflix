@@ -1,8 +1,10 @@
 import React from 'react';
+import Button from './Button';
+import { Link } from 'react-router-dom';
 
 interface ButtonPropsModel {
     className?: string,
-    href?: string,
+    href?: any,
 }
 
 class ButtonLink extends React.Component<ButtonPropsModel, {}> {
@@ -19,9 +21,9 @@ class ButtonLink extends React.Component<ButtonPropsModel, {}> {
 
     render(): JSX.Element {
         return (
-            <a href={this.props.href} className={this.props.className}>
+            <Button as={Link} to={this.props.href} className={this.props.className}>
                 {this.props.children}
-            </a>
+            </Button>
         );
     }
 }
